@@ -4,10 +4,10 @@ import * as version from './version';
 import * as git from './git'
 import * as github from './github'
 
-async function run(): Promise<void> {
+export async function run(): Promise<void> {
   try {
     const token = core.getInput('repo-token')
-    const tag = event.getCreatedTag()
+    const tag = getCreatedTag()
     var releaseUrl = ''
 
     if (tag && version.isSemVer(tag)) {
@@ -22,5 +22,3 @@ async function run(): Promise<void> {
 }
 
 run()
-
-export { run as run };
